@@ -1,0 +1,2 @@
+# studentBasicCrud
+Student Information system
