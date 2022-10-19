@@ -1,0 +1,407 @@
+openapi: 3.0.1
+ 
+
+info:
+  title: Student Information System
+  description: API Definitions of Student Information System
+  version: 1.0.0
+servers:
+  - url: http://localhost:8090
+    description: Generated server url
+
+tags:
+  - name: Home - list of all students
+    description: ""
+    
+  - name: Add new student
+    description: ""
+
+  - name: Edit Students Data
+    description: ""
+    
+  - name: Delete Students Data
+    description: ""
+    
+  - name: Sorting And Search Filters
+    description: ""
+
+
+paths:
+
+  /api/student:
+  
+    get:
+      tags:
+        - Home - list of all students 
+      summary: Get all students
+      operationId: getAllStudents
+      
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'         
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+          
+    post:
+      tags:
+        - Add new student
+      summary: Add a student
+      operationId: saveStudent
+      requestBody:
+        description: Replace the _"0"_ and _"string"_ to students data.
+                    _Note_- ID is autoincremented, leave it _"0"_ or put desired value.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+        required: true
+        
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'         
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+          
+          
+          
+  /api/student/home/{offSet}:
+  
+    get:
+      tags:
+        - Home - list of all students
+      summary: This method is part of pagination.
+      operationId: getAllStudents_1
+      parameters:
+        - name: offSet
+          description: Page number to return.(_5 items per page_). Note that 0 is the first page
+          in: path
+          required: true
+          schema:
+            default: 0
+            type: integer
+            format: int32
+            
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'         
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+                  
+                  
+                
+  /api/student/{id}:     
+  
+    put:
+      tags:
+        - Edit Students Data
+      summary: Modify a student
+      operationId: updateStudent
+      parameters:
+        - name: id
+          description: ID of student to be modified
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'         
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: Bad request
+        '404':
+          description: Student not found
+        '500':
+          description: Internal server error
+                
+                
+    delete:
+      tags:
+        - Delete Students Data
+      summary: Remove a student
+      operationId: deleteStudent
+      parameters:
+        - name: id
+          description: ID of student to be deleted
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'         
+        '400':
+          description: Bad request
+        '404':
+          description: No student found with this ID
+        '500':
+          description: Internal server error
+                
+                
+    get:
+      tags:
+        - Sorting And Search Filters
+      summary: Get student by ID
+      operationId: getStudentById
+      parameters:
+        - name: id
+          in: path
+          description: ID of student to be return
+          required: true
+          schema:
+            type: integer
+            format: int64
+            
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'         
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: Bad request
+        '404':
+          description: Student not found
+        '500':
+          description: Internal server error
+    
+                
+                
+
+  /api/student/search/{offSet}/{search}:
+    get:
+      tags:
+        - Sorting And Search Filters
+      summary: Search a student by firstname or middle-name or lastname and others .
+      operationId: getSearch
+      parameters:
+        - name: offSet
+          description: 0 is the default value. _0 is the first page of the search result(s)_
+          in: path
+          required: true
+          schema:
+            default: 0
+            type: integer
+            format: int32
+            
+        - name: search
+          description: Enter (firstname) or (middle-name) or (lastname) or (section) or (year level) or (adress). _Note- ID search not supported_
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'         
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: Bad request
+        '404':
+          description: Student not found
+        '500':
+          description: Internal server error
+                  
+                  
+                  
+  /api/student/groupBySectionAndYearLevel/{section}/{yr_lvl}/{offSet}:
+    get:
+      tags:
+        - Sorting And Search Filters
+      summary: Return students by section and year-level
+      operationId: getAll
+      parameters:
+        - name: offSet
+          description: 0 is the default value. _0 is the first page of the search result(s)_
+          in: path
+          required: true
+          schema:
+            default: 0
+            type: integer
+            format: int32
+            
+        - name: section
+          description: Section to be search for
+          in: path
+          required: true
+          schema:
+            type: string
+            
+        - name: yr_lvl
+          description: Year level to be search for
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'         
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: Bad request
+        '404':
+          description: Student not found
+        '500':
+          description: Internal server error
+                  
+                  
+  /api/student/ageBracket/{minAge}/{maxAge}/{offSet}:
+    get:
+      tags:
+        - Sorting And Search Filters
+      summary: Return students by age range
+      operationId: getAgeBracket
+      parameters:
+        - name: offSet
+          description: 0 is the default value. _0 is the first page of the search result(s)_
+          in: path
+          required: true
+          schema:
+            default: 0
+            type: integer
+            format: int32
+      
+        - name: minAge
+          description: Minimum age
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+            
+        - name: maxAge
+          description: Maximum age
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'         
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: Bad request
+        '404':
+          description: Student not found
+        '500':
+          description: Internal server error'
+                  
+                  
+components:
+
+  securitySchemes:
+    basicAuth:     
+      type: http
+      scheme: basic
+
+
+  schemas:
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        middleName:
+          type: string
+        lastName:
+          type: string
+        age:
+          type: integer
+          format: int32
+        address:
+          type: string
+        zip:
+          type: integer
+          format: int32
+        city:
+          type: string
+        region:
+          type: string
+        province:
+          type: string
+        phone_num:
+          type: integer
+          format: int64
+        mob_num:
+          type: integer
+          format: int64
+        email:
+          type: string
+        yr_lvl:
+          type: string
+        section:
+          type: string
+          
+security:
+- basicAuth: [] 

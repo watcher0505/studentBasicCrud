@@ -1,0 +1,97 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #bdc3c7;
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+
+tr {
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+
+
+th,td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: small;
+}
+
+#header {
+    background-color: #16a085;
+    color: #fff;
+}
+
+tbody tr:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.02);
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.commands {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+}
+
+.tableContainer {
+    position: relative;
+    max-height: 500px;
+    max-width: max-content;
+    overflow-y: scroll;
+    padding: 30px 30px 0 30px;
+    margin-bottom: 20px;
+}
+
+.addButton {
+    max-width: 200px;
+    padding-bottom: 20px;
+}
+
+.sortCommand {
+    padding: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #16a085;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    width: 300px;
+}
+
+.groupSection {
+    width: 300px;
+}
+
+.groupYearLevel {
+    width: 300px;
+}
+
+.commandDivision {
+    display: flex;
+    flex-direction: row;
+}
+
+.groupBySectionAndYearLevel {
+    padding: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #16a085;
+    width: 600px;
+}
+
+.groupBySectionAndYearLevelDivision {
+    display: flex;
+    margin: 10px;
+}

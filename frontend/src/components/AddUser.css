@@ -1,0 +1,170 @@
+
+
+#main{
+   background-color:rgb(207, 207, 207);
+   max-width:900px;
+   
+   align-self: center;
+   margin: auto;
+   margin-top: 40px;
+   margin-bottom: 20px;
+   padding: 10px;
+   border-radius: 15px;
+   align-items: center;
+   font-size: 13px;
+   
+}
+
+#inputDiv label{
+   color: rgb(83, 92, 90);
+}
+
+label{
+   margin-left: 15px;
+}
+
+#addHead{
+   background-color:#16a085;
+   width: 100%;
+   height: 4rem;
+   border-radius: 10px;
+   text-align: center;
+   font-weight: bold;
+   font-size:25px;
+   color: #fff;
+   padding: 10px;
+   margin-bottom: 30px;
+}
+
+
+
+#nameStatus,
+#address,
+#contacts{
+
+   margin-bottom: 20px;
+   background-color: rgb(231, 231, 231);
+   border-radius: 10px;
+}
+
+
+#groupLabel{
+   margin-left: 70px;
+   font-size: x-large;
+   font-weight: bold;
+   margin-top: 10px;
+}
+
+#inputDiv{
+   width: 100%;
+   height: 6rem;
+   display: flex;
+   flex-direction: row; 
+   padding-left: 60px;
+   margin-bottom: 6px;
+   border-radius: 10px;
+   font-weight: bold;
+   margin: auto;
+   align-items: center;
+  
+   
+}
+
+#inputItem,
+#inputItemCity,
+#inputItemYR,
+#inputItemSC{
+  width: 15rem;
+  margin-left:  5px ;
+  margin-right:  5px ;
+  margin-top: -8px;
+}
+
+
+
+#inputItemAddress
+{
+   width: 30.5rem;
+   margin-left:  5px ;
+   margin-right:  5px ;
+   margin-top: -8px;
+ }
+
+
+#addBtnCont{
+   margin-top: 20px;
+   text-align: center;
+   
+}
+
+#addBtn{
+   width: 6rem;
+   margin-left: 5px;
+   margin-right: 10px;
+
+}
+
+#cancelBtn{
+   margin-left: 10px;
+   margin-right: 5px;
+}
+
+
+
+@media only screen and (max-width: 800px){
+
+   #main{
+      margin-bottom: 50px;
+      margin-top: 0%;
+      border-radius: 0;
+   }
+
+  
+
+   #inputDiv{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column; 
+      padding: 0%;
+      border-radius: 10px;
+      font-weight: bold;
+      margin: auto;
+      align-items: center;
+   }
+
+   #nameStatus,
+   #address,
+   #contacts{
+   margin-bottom: 20px;
+   background-color: rgb(231, 231, 231);
+   border-radius: 10px;
+   width: 400px;
+   margin: auto;
+   margin-top: 10px;
+}
+
+   #inputItem,
+   #inputItemCity,
+   #inputItemAddress{
+      width: 100%;
+      margin: auto;
+      margin-top: -8px;
+   }
+
+   #inputItemYR,
+   #inputItemSC{
+   width: 15rem;
+
+}
+
+
+   #groupDiv{
+      align-items: center;
+      text-align: center;
+      margin-left: -70px;
+   }
+   
+
+
+}
